@@ -1,6 +1,25 @@
 import mongoose from "mongoose";
 import dotenv from "dotenv";
+dotenv.config();
 
-export default db = mongoose.connect(process.env.MONGODB_URI);
+// console.log("Attempting to connect");
 
-mongoose.connection.on("Connected to the Database", mongoose.connection.name);
+//store uri
+const URI = process.env.MONGO_URI;
+// console.log(URI);
+
+async function db() {
+  try {
+    await mongoose.connect(URI, {
+      //   useNewUrlParser: true,
+    });
+  } catch (error) {
+    console.error(error);
+    process.exit(1);
+  }
+}
+mongoose.connection.on("connected", () => {
+  console.log("Connected to MongoDB " + mongoose.connection.name);
+});
+
+export default db;
