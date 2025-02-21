@@ -27,3 +27,22 @@ router.get("/logs", async (req, res) => {
     res.status(500).json({ error: "Unable to fetch data due to server error" });
   }
 });
+//route to get specific log
+
+router.get("/logs/:id", async (req, res) => {
+  let logID = req.params.id;
+  try {
+    let results = await Logs.findOne({ log_id: logID });
+    if (results) {
+      res.status(200).json({
+        message: `Log with ID: ${logID}`,
+        log: results,
+      });
+    } else {
+      res.status(400).json({ err: `Unable to find the log with ID: ${logID}` });
+    }
+  } catch (err) {
+    console.error(err);
+    res.status(500).send("Internal server error");
+  }
+});
