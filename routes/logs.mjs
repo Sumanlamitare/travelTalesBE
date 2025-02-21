@@ -137,3 +137,23 @@ router.patch("/logs/:id", async (req, res) => {
     res.status(400).json({ error: err });
   }
 });
+//delete route for logs
+
+router.delete("/logs/:id", async (req, res) => {
+  let logID = req.params.id;
+  try {
+    let results = await Logs.findOne({ log_id: logID });
+    if (results) {
+      await Logs.findOneAndDelete({ log_id: logID });
+      res
+        .status(200)
+        .json({ Message: "Delete Successfull", deleted_log: results });
+    } else {
+      res.status(404).json({ message: `Log with ID: ${logID} does not exist` });
+    }
+  } catch (err) {
+    console.error(err);
+    res.status(400).json({ msg: "server error", err: err });
+  }
+});
+export default router;
