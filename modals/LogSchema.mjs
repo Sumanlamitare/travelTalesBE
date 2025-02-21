@@ -22,14 +22,14 @@ const LogSchema = new mongoose.Schema(
       type: String,
       default: "Additional details not provided",
     },
-    log_date: { type: Date, default: Date.now().toLocaleString() },
   },
   {
+    timestamps: true,
     versionKey: false,
   }
 );
 LogSchema.index({ log_id: 1 }, { unique: true });
 
-const Log = mongoose.model("Log", LogSchema);
+const Logs = mongoose.model("Logs", LogSchema);
 
-export default Log;
+export default Logs;
