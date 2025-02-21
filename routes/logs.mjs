@@ -115,3 +115,25 @@ router.post(
     }
   }
 );
+//patch/update route for logs
+
+router.patch("/logs/:id", async (req, res) => {
+  try {
+    let logId = req.params.id;
+    let result = await Logs.findOne({ log_id: logId });
+
+    if (result) {
+      const updated = await Logs.findOneAndUpdate({ log_id: logId }, req.body, {
+        new: true,
+      });
+      res
+        .status(200)
+        .json({ message: "Logs updated successfully", updated: updated });
+    } else {
+      res.status(400).json({ err: `Unable to find the log with ID: ${logId}` });
+    }
+  } catch (err) {
+    console.error(err);
+    res.status(400).json({ error: err });
+  }
+});
