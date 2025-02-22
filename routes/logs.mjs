@@ -27,6 +27,24 @@ router.get("/logs", async (req, res) => {
     res.status(500).json({ error: "Unable to fetch data due to server error" });
   }
 });
+//routes to get favorited places
+
+router.get("/logs/favorites", async (req, res) => {
+  try {
+    let result = await Logs.find({ isFavorite: true });
+    if (result) {
+      res.status(200).json({ message: "Favorite places", data: result });
+    } else {
+      res
+        .status(400)
+        .json({ message: "There are no places that are favorited" });
+    }
+  } catch (err) {
+    console.log(err);
+    res.status(500).json({ err: err });
+  }
+});
+
 //route to get specific log
 
 router.get("/logs/:id", async (req, res) => {
@@ -156,4 +174,5 @@ router.delete("/logs/:id", async (req, res) => {
     res.status(400).json({ msg: "server error", err: err });
   }
 });
+
 export default router;
