@@ -70,10 +70,6 @@ router.post(
   [
     check("location").not().isEmpty().withMessage("Location is required"),
     check("country").not().isEmpty().withMessage("Country is required"),
-    check("date_visited")
-      .optional()
-      .isISO8601()
-      .withMessage("Please enter a date format"),
     check("rating")
       .isInt({ min: 1, max: 10 })
       .withMessage("Please provide a rating, 1-10"),
