@@ -15,7 +15,7 @@ const LogSchema = new mongoose.Schema(
     log_id: Number,
     location: { type: String, required: true },
     country: { type: String, required: true },
-    date_visited: { type: Date, default: "N/A" },
+    date_visited: { type: String, default: "N/A" },
     rating: { type: Number, required: true },
     isFavorite: { type: Boolean, default: false },
     additional_comments: {
