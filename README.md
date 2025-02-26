@@ -13,12 +13,16 @@ This contains all the code for the backend for the travel-tales application.
 
 ## Schema set up
 
-<pre> ``` 
+<pre> 
 const LogSchema =
- { location: String, // Required 
+ { 
+
+location: String, // Required 
 country: String, // Required
  date_visited: String, // Optional (Format: YYYY-MM-DD) 
  rating: Number, // Required 
  isFavorite: Boolean, // Optional (Default: false)
-  additional_comments: String // Optional (User-provided details) }; ```
+  additional_comments: String // Optional (User-provided details) 
+  
+  }; 
    </pre>
