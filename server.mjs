@@ -18,6 +18,12 @@ db();
 app.use(express.json());
 app.use(cors());
 
+//error handling middleware
+app.use((err, req, res, next) => {
+  console.error(err.stack);
+  res.status(500).json({ error: "Internal Server Error" });
+});
+
 //landing page route for testing
 
 app.use("/", router);
