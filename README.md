@@ -13,11 +13,11 @@ This contains all the code for the backend for the travel-tales application.
 
 ## Schema set up
 
-{
+`{
 location: String, // Required
 country: String, // Required
 date_visited: String, // Optional
 rating: Number, // Required
 isFavorite: Boolean, // Optional
 additional_comments: String // Optional
-}
+}`
