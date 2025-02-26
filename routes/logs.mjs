@@ -33,7 +33,7 @@ router.get("/logs/favorites", async (req, res) => {
   try {
     let result = await Logs.find({ isFavorite: true });
     if (result) {
-      res.status(200).json({ message: "Favorite places", data: result });
+      res.status(200).json({ message: "Favorite places", logs: result });
     } else {
       res
         .status(400)
@@ -95,6 +95,7 @@ router.post(
         } else {
           req.body.log_id = 1;
         }
+
         const {
           log_id,
           location,
@@ -114,6 +115,7 @@ router.post(
           isFavorite,
           additional_comments,
         });
+        // console.log(country);
 
         await Logs.create(log);
 
