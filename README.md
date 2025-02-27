@@ -2,6 +2,11 @@
 
 This contains all the code for the backend for the travel-tales application.
 
+## Installation guide
+- Clone the repo - git clone url
+- install node packages - npm install
+- Create mongo URI and define the mongodb URI, Port.
+
 ## Routes/Endpoint
 
     - GET "/logs" - Lists all the Logs in the database.
